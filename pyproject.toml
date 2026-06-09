@@ -3,7 +3,7 @@ name = "crosshelp"
 version = "0.1.0"
 description = "A crossword helper CLI with pattern matching, anagrams, and word lookups"
 requires-python = ">=3.9"
-dependencies = ["click", "rich", "requests"]
+dependencies = ["click", "rich", "requests", "anthropic"]
 
 [build-system]
 requires = ["setuptools>=61.0"]

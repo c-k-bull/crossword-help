@@ -54,7 +54,7 @@ def _parse_candidates(raw_text):
     lines = raw_text.strip().split("\n")
     candidates = []
     for line in lines:
-        cleaned = re.sub(r"[^A-Za-z]", "". line).upper()
+        cleaned = re.sub(r"[^A-Za-z]", "", line).upper()
         if cleaned:
             candidates.append(cleaned)
     return candidates
@@ -63,3 +63,13 @@ def _filter_by_pattern(candidates, pattern):
     """Keep only candidates that match the given pattern."""
     regex = pattern_to_regex(pattern)
     return [c for c in candidates if regex.match(c)]
+
+def solve_clue_with_wordlist_check(clue, pattern, model="claude-haiku-4-5", max_candidates=5):
+    """
+    Like solve_clue, but also flags candidates that don't appear in the wordlist.
+
+    Returns a list of (word, in_wordlist) tuples.
+    """
+    valid = solve_clue(clue, pattern, model=model, max_candidates=max_candidates)
+    words_in_list = {word for word, score in load_words()}
+    return [(word, word in words_in_list) for word in valid]
