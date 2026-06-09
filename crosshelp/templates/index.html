@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crossword Helper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>🧩 Crossword Helper</h1>
+            <p class="subtitle">Pattern matching · Clue solving · Word lookup</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab active" data-mode="pattern">Pattern</button>
+            <button class="tab" data-mode="clue">Clue</button>
+            <button class="tab" data-mode="synonym">Meaning</button>
+        </nav>
+
+        <section class="form" id="form-pattern">
+            <label>Pattern <small>(use ? for unknown letters)</small></label>
+            <input type="text" id="pattern-input" placeholder="C?OSSW?RD">
+            <label>Minimum score</label>
+            <input type="number" id="pattern-min-score" value="50" min="0" max="100">
+            <button class="search-btn" data-mode="pattern">Search</button>
+        </section>
+
+        <section class="form hidden" id="form-clue">
+            <label>Clue</label>
+            <input type="text" id="clue-text" placeholder="Capital of France">
+            <label>Pattern <small>(use ? for unknown letters)</small></label>
+            <input type="text" id="clue-pattern" placeholder="?????">
+            <button class="search-btn" data-mode="clue">Solve</button>
+        </section>
+
+        <section class="form hidden" id="form-synonym">
+            <label>Meaning</label>
+            <input type="text" id="synonym-meaning" placeholder="fleeting">
+            <label>Pattern <small>(optional)</small></label>
+            <input type="text" id="synonym-pattern" placeholder="?????????">
+            <button class="search-btn" data-mode="synonym">Search</button>
+        </section>
+
+        <section id="results">
+            <div id="loading" class="hidden">Searching...</div>
+            <div id="error" class="hidden"></div>
+            <ul id="result-list"></ul>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
