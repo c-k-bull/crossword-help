@@ -1,0 +1,926 @@
+{
+  "metrics": {
+    "total": 75,
+    "top1_correct": 53,
+    "topk_correct": 59,
+    "top1_accuracy": 0.7066666666666667,
+    "topk_accuracy": 0.7866666666666666
+  },
+  "results": [
+    {
+      "clue": "Cozy home in the woods",
+      "pattern": "?????",
+      "expected": "CABIN",
+      "candidates": [
+        "CABIN",
+        "LODGE",
+        "SHACK",
+        "HUTCH",
+        "BOWER",
+        "HOVEL",
+        "NESTS",
+        "SHIRE"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Cooking vessels for omelets",
+      "pattern": "????",
+      "expected": "PANS",
+      "candidates": [
+        "PANS",
+        "WOKS",
+        "SKIS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Ask for, as a cigarette, informally",
+      "pattern": "???",
+      "expected": "BUM",
+      "candidates": [
+        "BUM",
+        "BEG",
+        "ASK",
+        "BUG",
+        "NAG",
+        "CAN"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Putting to work",
+      "pattern": "?????",
+      "expected": "USING",
+      "candidates": [
+        "USING",
+        "APPLY",
+        "EXERT",
+        "WIELD",
+        "INUSE",
+        "TYING"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Box office dud",
+      "pattern": "????",
+      "expected": "FLOP",
+      "candidates": [
+        "BOMB",
+        "FLOP",
+        "BUST",
+        "DODO"
+      ],
+      "correct_top1": false,
+      "correct_topk": true
+    },
+    {
+      "clue": "Lasso material",
+      "pattern": "????",
+      "expected": "ROPE",
+      "candidates": [
+        "ROPE",
+        "CORD",
+        "HEMP",
+        "JUTE"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "*High-energy person, metaphorically",
+      "pattern": "??????????",
+      "expected": "BALLOFFIRE",
+      "candidates": [
+        "ENERGYBOMB",
+        "POWERHOUSE"
+      ],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "Means justifiers, it's said",
+      "pattern": "????",
+      "expected": "ENDS",
+      "candidates": [
+        "ENDS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Nothing doing?",
+      "pattern": "????",
+      "expected": "IDLE",
+      "candidates": [
+        "NOPE",
+        "NADA",
+        "ZERO",
+        "NILL"
+      ],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "\"Who's there?\" response",
+      "pattern": "?????",
+      "expected": "ITSME",
+      "candidates": [
+        "ITSME",
+        "KNOCK",
+        "HELLO",
+        "GUEST"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Corp. honchos",
+      "pattern": "????",
+      "expected": "CEOS",
+      "candidates": [
+        "CEOS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Melon with a yellow rind",
+      "pattern": "??????",
+      "expected": "CASABA",
+      "candidates": [
+        "CASABA",
+        "CANARY"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Strategic maneuver",
+      "pattern": "??????",
+      "expected": "TACTIC",
+      "candidates": [
+        "GAMBIT",
+        "TACTIC",
+        "MOVEUP"
+      ],
+      "correct_top1": false,
+      "correct_topk": true
+    },
+    {
+      "clue": "Ending with Oktober or gab",
+      "pattern": "????",
+      "expected": "FEST",
+      "candidates": [
+        "FEST"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Rap culture",
+      "pattern": "??????",
+      "expected": "HIPHOP",
+      "candidates": [
+        "HIPHOP",
+        "STREET"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Obsolescent msuic purchases, in brief",
+      "pattern": "???",
+      "expected": "CDS",
+      "candidates": [
+        "CDS",
+        "MPS",
+        "CDS",
+        "WAX"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Low-pH liquids",
+      "pattern": "?????",
+      "expected": "ACIDS",
+      "candidates": [
+        "ACIDS",
+        "WINES"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Liberty Mutual alternative",
+      "pattern": "?????",
+      "expected": "GEICO",
+      "candidates": [
+        "GEICO",
+        "STATE"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Single, double or triple, in baseball",
+      "pattern": "???",
+      "expected": "HIT",
+      "candidates": [
+        "HIT",
+        "OUT",
+        "RUN",
+        "BAT",
+        "TAG",
+        "HIT",
+        "RUN",
+        "OUT",
+        "HIT",
+        "RUN"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Dog command \ufffd or a hint to the starts of the answers to \"*High-energy person, metaphorically\", \"*Documentation leading to proof\", \"*Some fine porcelain\", and \"*\"Don't quit now!\"\"",
+      "pattern": "???????",
+      "expected": "GOFETCH",
+      "candidates": [],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "Org. for the Penguins and Ducks",
+      "pattern": "???",
+      "expected": "NHL",
+      "candidates": [
+        "NHL",
+        "WHA",
+        "AHL"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Popular sans-serif typeface",
+      "pattern": "?????",
+      "expected": "ARIAL",
+      "candidates": [
+        "ARIAL"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Geological rift",
+      "pattern": "?????",
+      "expected": "FAULT",
+      "candidates": [
+        "CHASM",
+        "GORGE",
+        "GULCH",
+        "ABYSS",
+        "CANON",
+        "FAULT"
+      ],
+      "correct_top1": false,
+      "correct_topk": true
+    },
+    {
+      "clue": "\"You've got mail!\" I.S.P.",
+      "pattern": "???",
+      "expected": "AOL",
+      "candidates": [
+        "AOL"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Official order",
+      "pattern": "??????",
+      "expected": "DECREE",
+      "candidates": [
+        "DECREE"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Christmas song",
+      "pattern": "????",
+      "expected": "NOEL",
+      "candidates": [
+        "NOEL",
+        "YULE"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Fate",
+      "pattern": "??????",
+      "expected": "KISMET",
+      "candidates": [
+        "KISMET",
+        "CHANCE",
+        "FUTURE"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Major blunders",
+      "pattern": "??????",
+      "expected": "SNAFUS",
+      "candidates": [
+        "ERRORS",
+        "GAFFES",
+        "BONERS"
+      ],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "Fliers that may consume thousands of insects in an hour",
+      "pattern": "????",
+      "expected": "BATS",
+      "candidates": [
+        "BATS",
+        "OWLS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Pimiento-stuffed treat",
+      "pattern": "?????",
+      "expected": "OLIVE",
+      "candidates": [
+        "OLIVE",
+        "OLIVE",
+        "OLIVE",
+        "OLIVE",
+        "OLIVE",
+        "OLIVE",
+        "OLIVE",
+        "OLIVE"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "____ fide",
+      "pattern": "????",
+      "expected": "BONA",
+      "candidates": [
+        "BONA",
+        "MALA",
+        "DEMI",
+        "SEMI"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Soothing succulent",
+      "pattern": "????",
+      "expected": "ALOE",
+      "candidates": [
+        "ALOE"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "*Documentation leading to proof",
+      "pattern": "??????????",
+      "expected": "PAPERTRAIL",
+      "candidates": [
+        "PAPERTRAIL"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Hieroglyphic bird",
+      "pattern": "????",
+      "expected": "IBIS",
+      "candidates": [
+        "IBIS",
+        "HAWK",
+        "KITE"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "R&B great Redding",
+      "pattern": "????",
+      "expected": "OTIS",
+      "candidates": [
+        "OTIS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Tries to deice, as winter roads",
+      "pattern": "?????",
+      "expected": "SALTS",
+      "candidates": [
+        "SALTS",
+        "SANDS",
+        "GRITS",
+        "PLOWS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Bit of skin ink, informally",
+      "pattern": "???",
+      "expected": "TAT",
+      "candidates": [
+        "TAT",
+        "TAU",
+        "INK"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Cooped (up)",
+      "pattern": "????",
+      "expected": "PENT",
+      "candidates": [
+        "PENT",
+        "SHUT"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Totally lost",
+      "pattern": "?????",
+      "expected": "ATSEA",
+      "candidates": [
+        "INAWE"
+      ],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "Shaped like dice",
+      "pattern": "?????",
+      "expected": "CUBIC",
+      "candidates": [
+        "CUBIC",
+        "CUBED"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Carne _____ (taco filling)",
+      "pattern": "?????",
+      "expected": "ASADA",
+      "candidates": [
+        "ASADA"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Football team in Buffalo",
+      "pattern": "?????",
+      "expected": "BILLS",
+      "candidates": [
+        "BILLS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Blooming with foliage",
+      "pattern": "??????",
+      "expected": "INLEAF",
+      "candidates": [],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "Oxfam or Mercy Corps, e.g., in brief",
+      "pattern": "???",
+      "expected": "NGO",
+      "candidates": [
+        "NGO",
+        "NPO",
+        "ORG",
+        "CHR"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "[Gone \ufffd just like that!]",
+      "pattern": "????",
+      "expected": "PFFT",
+      "candidates": [
+        "POOF",
+        "ZAPS",
+        "ZIPS",
+        "POPS",
+        "DUST",
+        "FLED",
+        "WENT"
+      ],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "Like red-carpet celebrities",
+      "pattern": "?????",
+      "expected": "ALIST",
+      "candidates": [],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "_____ Rae (Sally Field title role)",
+      "pattern": "?????",
+      "expected": "NORMA",
+      "candidates": [],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "Oration",
+      "pattern": "??????",
+      "expected": "SPEECH",
+      "candidates": [
+        "SPEECH",
+        "SERMON",
+        "SPEECH",
+        "SERMON",
+        "TIRADE",
+        "HOMILY",
+        "EULOGY"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "*Some fine porcelain",
+      "pattern": "?????????",
+      "expected": "BONECHINA",
+      "candidates": [
+        "CHINAWARE",
+        "BONECHINA",
+        "STONEWARE",
+        "EARTHWARE",
+        "PORCELAIN"
+      ],
+      "correct_top1": false,
+      "correct_topk": true
+    },
+    {
+      "clue": "Beehive or French twist",
+      "pattern": "????",
+      "expected": "UPDO",
+      "candidates": [
+        "UPDO"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Kitchen description after Spaghetti Sunday",
+      "pattern": "????",
+      "expected": "MESS",
+      "candidates": [
+        "MESS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "A cook might have a secret one",
+      "pattern": "??????",
+      "expected": "RECIPE",
+      "candidates": [
+        "RECIPE",
+        "INGRED",
+        "RECIPE",
+        "METHOD"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Ludicrous failure",
+      "pattern": "??????",
+      "expected": "FIASCO",
+      "candidates": [
+        "FIASCO"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Snoopy and Gromit, for two",
+      "pattern": "???????",
+      "expected": "BEAGLES",
+      "candidates": [
+        "DOGSLED",
+        "CANINES",
+        "PUPPIES"
+      ],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "Turn clockwise, as a screw",
+      "pattern": "???????",
+      "expected": "TIGHTEN",
+      "candidates": [
+        "TIGHTEN",
+        "SCREWIN"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Petty kerfuffle",
+      "pattern": "????",
+      "expected": "TIFF",
+      "candidates": [
+        "TIFF",
+        "FUSS",
+        "SPAT",
+        "DUST",
+        "MIFF",
+        "SNIT"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Eight: Sp.",
+      "pattern": "????",
+      "expected": "OCHO",
+      "candidates": [
+        "OCHO"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Opinion survey",
+      "pattern": "????",
+      "expected": "POLL",
+      "candidates": [
+        "POLL",
+        "VOTE",
+        "QUIZ",
+        "TEST"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Country east of Niger",
+      "pattern": "????",
+      "expected": "CHAD",
+      "candidates": [
+        "CHAD",
+        "MALI"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "In ____ straits",
+      "pattern": "????",
+      "expected": "DIRE",
+      "candidates": [
+        "DIRE",
+        "DEEP",
+        "HARD",
+        "DIRE"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "*\"Don't quit now!\"",
+      "pattern": "?????????",
+      "expected": "STICKTOIT",
+      "candidates": [
+        "KEEPGOING",
+        "NEVERQUIT"
+      ],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "Narc's org.",
+      "pattern": "???",
+      "expected": "DEA",
+      "candidates": [
+        "DEA",
+        "FBI",
+        "ATF"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Leave astounded",
+      "pattern": "????",
+      "expected": "STUN",
+      "candidates": [
+        "STUN",
+        "DAZE",
+        "STUN",
+        "STUN",
+        "DAZE",
+        "STUN",
+        "MAZE",
+        "DAZE",
+        "STUN"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Pitcher sent in to seal a win",
+      "pattern": "??????",
+      "expected": "CLOSER",
+      "candidates": [
+        "CLOSER",
+        "SAVIOR",
+        "RELIEF"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Crops up",
+      "pattern": "??????",
+      "expected": "ARISES",
+      "candidates": [
+        "ARISES",
+        "OCCURS",
+        "BREAKS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Panic! At the Disco genre",
+      "pattern": "??????",
+      "expected": "EMOPOP",
+      "candidates": [],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "One navigating a maze, maybe",
+      "pattern": "??????",
+      "expected": "LABRAT",
+      "candidates": [
+        "SOLVER",
+        "RATTER",
+        "SOLVER",
+        "TESTER",
+        "GERBIL",
+        "MUMPED",
+        "RATRUN",
+        "RATTER",
+        "SOLVER",
+        "TESTER",
+        "MOUSEY",
+        "RATTER",
+        "SOLVER",
+        "MOUSEY",
+        "TESTER",
+        "RATTER",
+        "SOLVER",
+        "TESTER",
+        "MOUSEY",
+        "RATTER",
+        "SOLVER",
+        "TESTER"
+      ],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "Give joy",
+      "pattern": "?????",
+      "expected": "ELATE",
+      "candidates": [
+        "ELATE",
+        "CHEER",
+        "SMILE",
+        "AMUSE",
+        "EXALT",
+        "BLESS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Basketball rebound play",
+      "pattern": "?????",
+      "expected": "TIPIN",
+      "candidates": [
+        "PUTUP",
+        "TIPUP",
+        "ALLEY",
+        "TIPUP",
+        "ALLEY",
+        "PUTUP"
+      ],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "Newborn horses",
+      "pattern": "?????",
+      "expected": "FOALS",
+      "candidates": [
+        "FOALS",
+        "COLTS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Join forces",
+      "pattern": "?????",
+      "expected": "UNITE",
+      "candidates": [
+        "UNITE",
+        "MERGE"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "It can be verde or roja",
+      "pattern": "?????",
+      "expected": "SALSA",
+      "candidates": [
+        "SAUCE",
+        "SALSA",
+        "CHILE",
+        "PEPPR"
+      ],
+      "correct_top1": false,
+      "correct_topk": true
+    },
+    {
+      "clue": "\"Sin City\" co-star Jessica",
+      "pattern": "????",
+      "expected": "BAIT",
+      "candidates": [
+        "ALBA",
+        "TORO",
+        "HAHN",
+        "GRAY"
+      ],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "Waistcoat",
+      "pattern": "????",
+      "expected": "ALBA",
+      "candidates": [
+        "VEST"
+      ],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "Airport grp.",
+      "pattern": "???",
+      "expected": "TSA",
+      "candidates": [
+        "ATA",
+        "TSA",
+        "FAA"
+      ],
+      "correct_top1": false,
+      "correct_topk": true
+    }
+  ]
+}

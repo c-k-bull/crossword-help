@@ -11,3 +11,13 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools.package-data]
 crosshelp = ["data/*.txt"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-cov",
+]
+
+[tool.setuptools.packages.find]
+include = ["crosshelp*"]
+exclude = ["evals*", "tests*", "assets*"]

@@ -1,0 +1,259 @@
+{
+  "metrics": {
+    "total": 20,
+    "top1_correct": 17,
+    "topk_correct": 19,
+    "top1_accuracy": 0.85,
+    "topk_accuracy": 0.95
+  },
+  "results": [
+    {
+      "clue": "With it",
+      "pattern": "???",
+      "expected": "HIP",
+      "candidates": [
+        "HIP",
+        "NOW",
+        "HEP",
+        "MOD",
+        "JAW",
+        "HOP",
+        "ARF",
+        "TIP"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Curving flight paths",
+      "pattern": "????",
+      "expected": "ARCS",
+      "candidates": [
+        "ARCS",
+        "BOWS",
+        "ARCS",
+        "BOWS",
+        "LOBS",
+        "DIPS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Dodos",
+      "pattern": "?????",
+      "expected": "ASSES",
+      "candidates": [
+        "ASSES",
+        "GEESE",
+        "DUNCE",
+        "BOZOS",
+        "BOOBS",
+        "NINNY",
+        "ASSES",
+        "GEESE",
+        "DUNCE",
+        "BOZOS",
+        "BOOBS",
+        "NINNY"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Within",
+      "pattern": "????",
+      "expected": "AMID",
+      "candidates": [
+        "AMID"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Yellow ingredient left out of some omelets",
+      "pattern": "????",
+      "expected": "YOLK",
+      "candidates": [
+        "YOLK",
+        "EGGY",
+        "EGGS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Not sharp, as a pencil or knife",
+      "pattern": "?????",
+      "expected": "BLUNT",
+      "candidates": [
+        "BLUNT",
+        "DULLS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Built-in lag time to allow bleeping during a live broadcast",
+      "pattern": "?????????",
+      "expected": "TAPEDELAY",
+      "candidates": [
+        "TAPEDELAY"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Biig maker of calculators and digital watches",
+      "pattern": "?????",
+      "expected": "CASIO",
+      "candidates": [
+        "CASIO",
+        "TEXAS",
+        "SHARP"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Landscape, e.g.",
+      "pattern": "?????",
+      "expected": "SCENE",
+      "candidates": [
+        "GENRE",
+        "PAINT",
+        "STYLE",
+        "SCENE",
+        "VISTA",
+        "THEME"
+      ],
+      "correct_top1": false,
+      "correct_topk": true
+    },
+    {
+      "clue": "Shiny item of fishing tackle",
+      "pattern": "????",
+      "expected": "LURE",
+      "candidates": [
+        "LURE",
+        "HOOK",
+        "REEL",
+        "LINE"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Scorch",
+      "pattern": "????",
+      "expected": "CHAR",
+      "candidates": [
+        "SEAR",
+        "CHAR",
+        "BURN"
+      ],
+      "correct_top1": false,
+      "correct_topk": true
+    },
+    {
+      "clue": "Part of a swimmer's sidestroke",
+      "pattern": "????????????",
+      "expected": "SCISSORSKICK",
+      "candidates": [
+        "BODYROTATION"
+      ],
+      "correct_top1": false,
+      "correct_topk": false
+    },
+    {
+      "clue": "\"Get over it\"",
+      "pattern": "??????",
+      "expected": "MOVEON",
+      "candidates": [
+        "MOVEON",
+        "HEALUP"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Part of a Superman costume",
+      "pattern": "????",
+      "expected": "CAPE",
+      "candidates": [
+        "CAPE",
+        "BELT",
+        "BOOT",
+        "MASK",
+        "CURL"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Roman love god",
+      "pattern": "????",
+      "expected": "AMOR",
+      "candidates": [
+        "AMOR",
+        "EROS"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Boat wood",
+      "pattern": "????",
+      "expected": "TEAK",
+      "candidates": [
+        "TEAK",
+        "PINE"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Chimp's cousin",
+      "pattern": "?????",
+      "expected": "ORANG",
+      "candidates": [
+        "ORANG",
+        "LEMUR"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Hawaiian garland",
+      "pattern": "???",
+      "expected": "LEI",
+      "candidates": [
+        "LEI"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Good vantage point at an opera house or stadium",
+      "pattern": "???????",
+      "expected": "BOXSEAT",
+      "candidates": [
+        "BOXSEAT",
+        "BALCONY",
+        "GALLERY"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    },
+    {
+      "clue": "Seven on a grandfather clock",
+      "pattern": "???",
+      "expected": "VII",
+      "candidates": [
+        "VII"
+      ],
+      "correct_top1": true,
+      "correct_topk": true
+    }
+  ]
+}

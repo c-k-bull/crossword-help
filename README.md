@@ -39,6 +39,19 @@ The wordlist is the [Peter Broda "Spread the Wordlist"](https://peterbroda.me/cr
 
 For clue solving, the LLM is asked for candidate answers given the clue and pattern. The candidates are then validated against the actual regex pattern (because LLMs occasionally suggest wrong-length or wrong-letter answers) and cross-referenced against the wordlist (to flag potential hallucinations).
 
+## Model performance
+
+The clue solver is evaluated against a held-out test set of NYT Monday crossword clues. The eval framework measures both **top-1 accuracy** (whether the model's first answer is correct) and **top-k accuracy** (whether the correct answer appears anywhere in the candidate list).
+
+| Metric | Score | Examples |
+|--------|-------|----------|
+| Top-1 accuracy | 70.7% | 53/75 |
+| Top-k accuracy | 78.7% | 59/75 |
+
+Test set: 75 clues from NYT Monday puzzles, held out from prompt tuning. Train and test splits are kept disjoint to prevent data leakage; the system prompt uses general principles rather than specific clue examples.
+
+Eval framework runs via `python evals/run_eval.py --split test --save`. Per-clue results are persisted to `evals/results/` for tracking improvements across iterations.
+
 ## Tech stack
 
 - **Backend:** Python, Flask, Flask-CORS
@@ -79,6 +92,21 @@ python -m crosshelp.web
 ```
 
 A browser tab opens automatically at `http://127.0.0.1:5000`.
+
+## Running tests
+
+The project includes a pytest test suite covering pattern matching, anagram logic, clue parsing, and web endpoints.
+
+```bash
+pip install -e ".[dev]"
+pytest
+```
+
+To see test coverage:
+
+```bash
+pytest --cov=crosshelp --cov-report=term-missing
+```
 
 ## Project structure
 crosshelp/

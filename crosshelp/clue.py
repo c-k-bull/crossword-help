@@ -4,15 +4,54 @@ from anthropic import Anthropic
 
 from .patterns import pattern_to_regex, load_words
 
-SYSTEM_PROMPT = """You are an expert crossword solver, using the NYT crosswords as a baseline for trivia and wordplay. Given a clue and a letter pattern, suggest possible answers.
+SYSTEM_PROMPT = """You are an expert crossword solver with deep knowledge of NYT-style puzzles.
 
-Rules:
-- The pattern uses ? for unknown letters and capital letters for known letters.
-- Every answer MUST be exactly the same length as the pattern.
-- Every answer MUST match the fixed letters in the pattern.
-- Return one answer per line, uppercase, no punctuation, no explanation.
-- Return up to 8 answers, best first.
-- If you have no good guesses, return nothing."""
+Given a clue and a letter pattern, suggest possible answers. The pattern uses ? for unknown letters and capital letters for known letters.
+
+Crossword answers follow specific conventions you must respect:
+
+1. Crossword clues often use SLANG, IDIOMATIC, or SECONDARY meanings rather than literal ones.
+
+2. Prefer COMMON crossword-frequency answers over rare ones. Think about what answer would actually appear in a published puzzle.
+
+3. ROMAN NUMERALS are common for clues involving clock positions, centuries, popes, or "old" numbers. 
+
+4. WORDPLAY clues use puns, double meanings, or hidden references. A question mark at the end of the clue (not in a quotation) is almost ALWAYS an indication of wordplay
+
+5. PHRASES are common and written as single uppercase strings with no spaces.
+
+6. If a word in a clue is in a specific language, the answer will often be in the same language
+
+7. Generate 5-10 candidates. ORDER MATTERS: list the most likely crossword answer first, even if a more literal answer comes to mind.
+
+OUTPUT FORMAT (strict):
+- One answer per line
+- Uppercase, no punctuation, no spaces, no explanation
+- Every answer MUST exactly match the pattern length
+- Every answer MUST match the fixed letters in the pattern
+- If you have no good candidates, return nothing
+
+Examples:
+
+Clue: Big Apple, briefly
+Pattern: ???
+Answer:
+NYC
+
+Clue: Dodos
+Pattern: ?????
+Answer:
+ASSES
+GEESE
+DUNCE
+BOZOS
+IDIOT
+
+Clue: Seven on a grandfather clock
+Pattern: ???
+Answer:
+VII
+"""
 
 def solve_clue(clue, pattern, model="claude-haiku-4-5", max_candidates=8):
     """
