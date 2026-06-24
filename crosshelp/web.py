@@ -4,6 +4,7 @@ from flask_cors import CORS
 from .patterns import find_matches
 from .clue import solve_clue
 from .synonyms import find_by_meaning
+from .db.queries import log_search, recent_searches
 
 app = Flask(__name__)
 CORS(app)
@@ -31,6 +32,17 @@ def api_pattern():
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
     
+    top_result = results[0][0] if results else None
+    try:
+        log_search(
+            mode="pattern",
+            pattern=pattern,
+            result_count=len(results),
+            top_result=top_result,
+        )
+    except Exception as e:
+        print(f"Failted to log search: {e}")
+    
     return jsonify({
         "results": [{"word": word, "score": score} for word, score in results]
     })
@@ -46,6 +58,18 @@ def api_clue():
         return jsonify({"error": "Both clue and pattern are required"}), 400
     
     results = solve_clue(clue, pattern)
+    top_result = results[0] if results else None
+
+    try:
+        log_search(
+            mode="clue",
+            clue=clue,
+            pattern=pattern,
+            result_count=len(results),
+            top_result=top_result,
+        )
+    except Exception as e:
+        print(f"Failted to log search: {e}")
 
     return jsonify({
         "results": [{"word": word, "score": None} for word in results]
@@ -63,10 +87,38 @@ def api_synonym():
         return jsonify({"error": "Meaning is required"}), 400
     
     results = find_by_meaning(meaning, pattern=pattern, limit=limit)
+    top_result = results[0]["word"] if results else None
+    try:
+        log_search(
+            mode="synonym",
+            meaning=meaning,
+            pattern=pattern,
+            result_count=len(results),
+            top_result=top_result,
+        )
+    except Exception as e:
+        print(f"Failted to log search: {e}")
 
     return jsonify({
         "results": results
     })
+
+@app.route("/api/history", methods=["GET"])
+def api_history():
+    """Return recent searches"""
+    mode = request.args.get("mode")
+    limit = int(request.args.get("limit", 20)),
+    try:
+        rows = recent_searches(limit=limit, mode=mode)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    #Serialize datetime to ISO string for JSON output
+    for row in rows:
+        if row.get("created_at"):
+            row["created_at"] = row["created_at"].isoformat()
+    
+    return jsonify({"history": rows})
 
 def main():
     """Entry point: start the dev server."""

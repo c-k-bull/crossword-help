@@ -59,6 +59,30 @@ Eval framework runs via `python evals/run_eval.py --split test --save`. Per-clue
 - **APIs:** Anthropic (Claude Haiku 4.5), Datamuse
 - **Data:** Peter Broda crossword wordlist with quality scores
 
+## Database
+
+Search queries are logged to PostgreSQL. The schema and query layer live in `crosshelp/db/`.
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `id` | SERIAL | Primary key |
+| `mode` | TEXT | Search type (pattern/anagram/clue/synonym) |
+| `pattern`, `clue`, `letters`, `meaning` | TEXT | Input fields per search type |
+| `result_count` | INTEGER | Number of candidates returned |
+| `top_result` | TEXT | First result, for spot-checks |
+| `created_at` | TIMESTAMP | Query time, auto-set by Postgres |
+
+Indexes on `created_at` and `mode` keep recency and filter queries fast.
+
+### Setup
+
+```bash
+createdb crosshelp
+psql crosshelp < crosshelp/db/schema.sql
+```
+
+The app reads `DATABASE_URL` from the environment, defaulting to `postgresql://localhost/crosshelp`.
+
 ## Running locally
 
 ### Requirements
