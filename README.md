@@ -97,6 +97,32 @@ The app reads `DATABASE_URL` from the environment, defaulting to `postgresql://l
 - Python 3.9+
 - An Anthropic API key (free tier available)
 
+## Running with Docker
+
+The entire stack (Flask app + PostgreSQL) is containerized via Docker Compose.
+
+### Requirements
+- Docker Desktop installed and running
+- An Anthropic API key
+
+### Run
+
+```bash
+export ANTHROPIC_API_KEY="your-key-here"
+docker compose up
+```
+
+The app is available at `http://127.0.0.1:5000`. Postgres is exposed on `localhost:5432` if you want to inspect it directly.
+
+To stop: `Ctrl+C`, or in another terminal `docker compose down`.
+
+### Architecture
+
+- **app**: Python 3.11 Flask backend, built from the local `Dockerfile`
+- **db**: PostgreSQL 16 (Alpine), with schema auto-applied from `crosshelp/db/schema.sql` on first startup
+
+Postgres data persists in a named volume (`postgres_data`) across container restarts. To wipe the database, run `docker compose down -v`.
+
 ### Setup
 
 ```bash

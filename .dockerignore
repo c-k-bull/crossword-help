@@ -1,0 +1,30 @@
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.egg-info
+.pytest_cache
+venv/
+.venv/
+
+# Editors
+.vscode/
+.idea/
+.DS_Store
+
+# Local secrets
+.env
+.env.*
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# SQLite/Postgres data
+*.SQLite
+*.db
