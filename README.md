@@ -2,6 +2,7 @@
 
 ![CI](https://github.com/c-k-bull/crossword-helper/actions/workflows/ci.yml/badge.svg)
 
+**[Live demo →](https://crossword-helper.onrender.com)**
 
 A full-stack crossword solving tool combining pattern matching, LLM-powered clue interpretation, and semantic word lookup.
 
