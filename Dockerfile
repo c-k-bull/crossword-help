@@ -16,4 +16,4 @@ COPY pytest.ini ./
 
 EXPOSE 5001
 
-CMD ["python", "-m", "crosshelp.web"]
+CMD gunicorn --bind 0.0.0.0:${PORT:-5001} --workers 2 --threads 4 --timeout 60 crosshelp.web:app

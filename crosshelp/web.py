@@ -162,19 +162,21 @@ def main():
     """Entry point: start the dev server."""
     import os
 
-    port = 5001
+    # Render sets PORT; default to 5001 for local dev.
+    port = int(os.environ.get("PORT", 5001))
 
-    # Detect if we're in a container by checking for /.dockerenv,
-    # a file that Docker creates inside every container.
-    in_docker = os.path.exists("/.dockerenv")
+    # Detect environment.
+    in_container = os.path.exists("/.dockerenv")
+    in_render = bool(os.environ.get("RENDER"))
+    in_production = in_container or in_render
 
-    if not in_docker:
+    if not in_production:
         import webbrowser
         import threading
         url = f"http://127.0.0.1:{port}"
         threading.Timer(1.0, lambda: webbrowser.open(url)).start()
 
-    host = "0.0.0.0" if in_docker else "127.0.0.1"
+    host = "0.0.0.0" if in_production else "127.0.0.1"
     app.run(debug=False, host=host, port=port)
 
 

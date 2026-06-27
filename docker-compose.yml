@@ -18,10 +18,11 @@ services:
   app:
     build: .
     ports:
-      - "5001:5000"
+      - "5001:5001"
     environment:
       DATABASE_URL: postgresql://crosshelp:crosshelp@db:5432/crosshelp
       ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      PORT: "5001"
     depends_on:
       db:
         condition: service_healthy
