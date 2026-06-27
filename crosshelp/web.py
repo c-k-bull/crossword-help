@@ -4,7 +4,7 @@ from flask_cors import CORS
 from .patterns import find_matches
 from .clue import solve_clue
 from .synonyms import find_by_meaning
-from .db.queries import log_search, recent_searches
+from .db.queries import log_search, record_correction, recent_searches, accuracy_stats
 app = Flask(__name__)
 CORS(app)
 
@@ -16,6 +16,7 @@ def home():
 
 
 @app.route("/api/pattern", methods=["POST"])
+@app.route("/api/pattern", methods=["POST"])
 def api_pattern():
     """Pattern match search."""
     data = request.get_json()
@@ -25,24 +26,26 @@ def api_pattern():
 
     if not pattern:
         return jsonify({"error": "Pattern is required"}), 400
-    
+
     try:
         results = find_matches(pattern, min_score=min_score, limit=limit)
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
-    
+
     top_result = results[0][0] if results else None
+    search_id = None
     try:
-        log_search(
+        search_id = log_search(
             mode="pattern",
             pattern=pattern,
             result_count=len(results),
             top_result=top_result,
         )
     except Exception as e:
-        print(f"Failted to log search: {e}")
-    
+        print(f"Failed to log search: {e}")
+
     return jsonify({
+        "search_id": search_id,
         "results": [{"word": word, "score": score} for word, score in results]
     })
 
@@ -55,12 +58,12 @@ def api_clue():
 
     if not clue or not pattern:
         return jsonify({"error": "Both clue and pattern are required"}), 400
-    
+
     results = solve_clue(clue, pattern)
     top_result = results[0] if results else None
-
+    search_id = None
     try:
-        log_search(
+        search_id = log_search(
             mode="clue",
             clue=clue,
             pattern=pattern,
@@ -68,9 +71,10 @@ def api_clue():
             top_result=top_result,
         )
     except Exception as e:
-        print(f"Failted to log search: {e}")
+        print(f"Failed to log search: {e}")
 
     return jsonify({
+        "search_id": search_id,
         "results": [{"word": word, "score": None} for word in results]
     })
 
@@ -88,7 +92,7 @@ def api_synonym():
     results = find_by_meaning(meaning, pattern=pattern, limit=limit)
     top_result = results[0]["word"] if results else None
     try:
-        log_search(
+        search_id = log_search(
             mode="synonym",
             meaning=meaning,
             pattern=pattern,
@@ -99,7 +103,8 @@ def api_synonym():
         print(f"Failted to log search: {e}")
 
     return jsonify({
-        "results": results
+        "search_id": search_id,
+        "results": [{"word": word, "score": score} for word, score in results]
     })
 
 @app.route("/api/history", methods=["GET"])
@@ -118,6 +123,40 @@ def api_history():
             row["created_at"] = row["created_at"].isoformat()
     
     return jsonify({"history": rows})
+
+@app.route("/api/feedback", methods=["POST"])
+def api_feedback():
+    """Record a user correction on a previous search."""
+    data = request.get_json()
+    search_id = data.get("search_id")
+    corrected_answer = (data.get("corrected_answer") or "").strip()
+
+    if not search_id:
+        return jsonify({"error": "search_id is required"}), 400
+    if not corrected_answer:
+        return jsonify({"error": "corrected_answer is required"}), 400
+
+    try:
+        ok = record_correction(int(search_id), corrected_answer)
+    except (ValueError, TypeError):
+        return jsonify({"error": "search_id must be an integer"}), 400
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    if not ok:
+        return jsonify({"error": "Search not found"}), 404
+
+    return jsonify({"status": "recorded"})
+
+@app.route("/api/stats", methods=["GET"])
+def api_stats():
+    """Return reported accuracy stats."""
+    mode = request.args.get("mode")
+    try:
+        stats = accuracy_stats(mode=mode)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    return jsonify(stats)
 
 def main():
     """Entry point: start the dev server."""

@@ -1,5 +1,7 @@
 const API_BASE = "/api"
 
+let currentSearchId = null;
+
 const els = {
     tabs: document.querySelectorAll(".tab"),
     forms: {
@@ -11,6 +13,12 @@ const els = {
     loading: document.getElementById("loading"),
     error: document.getElementById("error"),
     resultList: document.getElementById("result-list"),
+    feedbackContainer: document.getElementById("feedback-container"),
+    feedbackLink: document.getElementById("feedback-link"),
+    feedbackForm: document.getElementById("feedback-form"),
+    correctAnswerInput: document.getElementById("correct-answer-input"),
+    feedbackSubmit: document.getElementById("feedback-submit"),
+    feedbackThanks: document.getElementById("feedback-thanks"),
 };
 
 // Tab switching
@@ -52,7 +60,9 @@ async function handleSearch(mode) {
             return;
         }
 
+        currentSearchId = data.search_id;
         renderResults(data.results, mode);
+        showFeedbackOption(data.results);
     } catch (err) {
         showError("Network error: " + err.message);
     } finally {
@@ -101,6 +111,8 @@ function clearResults() {
     els.resultList.innerHTML = "";
     els.error.classList.add("hidden");
     els.error.textContent = "";
+    els.feedbackContainer.classList.add("hidden");  
+    currentSearchId = null;                        
 }
 
 function setLoading(isLoading) {
@@ -112,3 +124,59 @@ function showError(message) {
     els.error.textContent = message;
     els.error.classList.remove("hidden");
 }
+
+function showFeedbackOption(results) {
+    if (!currentSearchId || !results || results.length === 0) {
+        els.feedbackContainer.classList.add("hidden");
+        return;
+    }
+    els.feedbackContainer.classList.remove("hidden");
+    els.feedbackForm.classList.add("hidden");
+    els.feedbackLink.classList.remove("hidden");
+    els.feedbackThanks.classList.add("hidden");
+    els.correctAnswerInput.value = "";
+}
+
+els.feedbackLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    els.feedbackLink.classList.add("hidden");
+    els.feedbackForm.classList.remove("hidden");
+    els.correctAnswerInput.focus();
+});
+
+els.feedbackSubmit.addEventListener("click", async () => {
+    const corrected = els.correctAnswerInput.value.trim();
+    if (!corrected) {
+        return;
+    }
+    if (!currentSearchId) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_BASE}/feedback`, {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify({
+                search_id: currentSearchId,
+                corrected_answer: corrected,
+            }),
+        });
+        if (response.ok) {
+            els.feedbackForm.classList.add("hidden");
+            els.feedbackThanks.classList.remove("hidden");
+        } else {
+            els.feedbackForm.classList.add("hidden");
+            els.feedbackThanks.textContent = "Sorry — couldn't record that.";
+            els.feedbackThanks.classList.remove("hidden");
+        }
+    } catch (err) {
+        console.error("Feedback submit error:", err);
+    }
+});
+
+els.correctAnswerInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        els.feedbackSubmit.click();
+    }
+});

@@ -61,7 +61,7 @@ Eval framework runs via `python evals/run_eval.py --split test --save`. Per-clue
 
 ## Database
 
-Search queries are logged to PostgreSQL. The schema and query layer live in `crosshelp/db/`.
+Search queries and user feedback are logged to PostgreSQL. The schema and query layer live in `crosshelp/db/`.
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -70,18 +70,17 @@ Search queries are logged to PostgreSQL. The schema and query layer live in `cro
 | `pattern`, `clue`, `letters`, `meaning` | TEXT | Input fields per search type |
 | `result_count` | INTEGER | Number of candidates returned |
 | `top_result` | TEXT | First result, for spot-checks |
+| `was_correct` | BOOLEAN | Defaults TRUE; flipped via user feedback |
+| `corrected_answer` | TEXT | User-supplied correct answer, when reported |
 | `created_at` | TIMESTAMP | Query time, auto-set by Postgres |
 
-Indexes on `created_at` and `mode` keep recency and filter queries fast.
+Indexes on `created_at`, `mode`, and `was_correct` keep recency, filter, and accuracy queries fast.
 
-### Setup
+### User feedback loop
 
-```bash
-createdb crosshelp
-psql crosshelp < crosshelp/db/schema.sql
-```
+When the top recommendation is wrong, users can submit the correct answer via an inline form. Corrections are recorded in `corrected_answer` and flip `was_correct` to FALSE. Over time this builds a labeled dataset of (clue, pattern, correct answer) triples that can be used to expand the eval set or fine-tune future iterations.
 
-The app reads `DATABASE_URL` from the environment, defaulting to `postgresql://localhost/crosshelp`.
+Note: `was_correct = TRUE` is the default state for any search no user reported. The metric we can compute from this column is **reported-wrong rate**, which is a lower bound on the true error rate (most users won't bother reporting). True accuracy is measured via the held-out eval set in `evals/`.
 
 ### Setup
 

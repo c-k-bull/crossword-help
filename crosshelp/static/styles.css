@@ -172,6 +172,57 @@ header h1 {
     border-bottom: none;
 }
 
+#feedback-container {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+}
+
+#feedback-link {
+    color: var(--muted);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#feedback-link:hover {
+    color: var(--accent);
+}
+
+#feedback-form {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#feedback-form input {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    text-transform: uppercase;
+    flex: 1;
+    min-width: 150px;
+}
+
+#feedback-form button {
+    padding: 6px 12px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#feedback-thanks {
+    color: #2d7a3e;
+    font-weight: 500;
+}
+
 .word {
     font-family: ui-monospace, "SF Mono", Menlo, monospace;
     font-size: 16px;
