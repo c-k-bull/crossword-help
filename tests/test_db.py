@@ -5,7 +5,7 @@ from crosshelp.db import queries
 @pytest.fixture(autouse=True)
 def use_test_database(monkeypatch):
     """Force all DB calls in this module to use the test database"""
-    test_url = "postgresql://localhost/crosshelp-test"
+    test_url = "postgresql://localhost/crosshelp_test"
     monkeypatch.setattr(queries, "DATABASE_URL", test_url)
     yield
     # Clean up after each test

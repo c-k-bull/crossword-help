@@ -5,7 +5,6 @@ from .patterns import find_matches
 from .clue import solve_clue
 from .synonyms import find_by_meaning
 from .db.queries import log_search, recent_searches
-
 app = Flask(__name__)
 CORS(app)
 

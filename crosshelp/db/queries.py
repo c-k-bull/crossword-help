@@ -10,10 +10,12 @@ from typing import Optional
 
 import psycopg
 
+
 DATABASE_URL = os.environ.get(
     "DATABASE_URL",
-    "postgresql://localhost/crosshelp"
+    "postgresql://localhost/crosshelp",
 )
+
 
 @contextmanager
 def get_connection():
@@ -25,7 +27,9 @@ def get_connection():
     except Exception:
         conn.rollback()
         raise
-    finally: conn.close()
+    finally:
+        conn.close()
+
 
 def log_search(
     mode: str,
@@ -49,31 +53,24 @@ def log_search(
                 (mode, pattern, clue, letters, meaning, result_count, top_result),
             )
 
+
 def recent_searches(limit: int = 20, mode: Optional[str] = None) -> list[dict]:
     """Return the most recent searches, optionally filtered by mode."""
+    base_query = """
+        SELECT id, mode, pattern, clue, letters, meaning,
+               result_count, top_result, created_at
+        FROM searches
+    """
     with get_connection() as conn:
         with conn.cursor() as cur:
             if mode:
                 cur.execute(
-                    """
-                    SELECT id, mode, pattern, clue, letters, meaning,
-                        result_count, top_result, created_at
-                    FROM searches
-                    WHERE mode = %s
-                    ORDER BY created_as DESC
-                    LIMIT %s
-                    """,
+                    base_query + " WHERE mode = %s ORDER BY created_at DESC LIMIT %s",
                     (mode, limit),
                 )
             else:
                 cur.execute(
-                    """
-                    SELECT id, mode, pattern, clue, letters, meaning,
-                        result_count, top_result, created_at
-                    FROM searches
-                    ORDER BY created_at DESC
-                    LIMIT %s
-                    """,
+                    base_query + " ORDER BY created_at DESC LIMIT %s",
                     (limit,),
                 )
             columns = [desc[0] for desc in cur.description]

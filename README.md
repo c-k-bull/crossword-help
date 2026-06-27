@@ -83,6 +83,15 @@ psql crosshelp < crosshelp/db/schema.sql
 
 The app reads `DATABASE_URL` from the environment, defaulting to `postgresql://localhost/crosshelp`.
 
+### Setup
+
+```bash
+createdb crosshelp
+psql crosshelp < crosshelp/db/schema.sql
+```
+
+The app reads `DATABASE_URL` from the environment, defaulting to `postgresql://localhost/crosshelp`.
+
 ## Running locally
 
 ### Requirements
