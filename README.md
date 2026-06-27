@@ -1,5 +1,8 @@
 # Crossword Assistant
 
+![CI](https://github.com/c-k-bull/crossword-helper/actions/workflows/ci.yml/badge.svg)
+
+
 A full-stack crossword solving tool combining pattern matching, LLM-powered clue interpretation, and semantic word lookup.
 
 ![Demo](assets/demo.gif)
@@ -165,6 +168,16 @@ To see test coverage:
 ```bash
 pytest --cov=crosshelp --cov-report=term-missing
 ```
+
+### Continuous Integration
+
+Every push to `main` and every pull request triggers an automated test run via GitHub Actions. The CI pipeline:
+
+1. Spins up a fresh PostgreSQL service container
+2. Applies the project schema
+3. Runs the full pytest suite
+
+The current build status is shown by the CI badge at the top of this README.
 
 ## Project structure
 crosshelp/
