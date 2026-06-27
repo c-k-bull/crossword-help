@@ -160,12 +160,22 @@ def api_stats():
 
 def main():
     """Entry point: start the dev server."""
-    import webbrowser
-    import threading
+    import os
 
-    url = "http://127.0.0.1:5050"
-    threading.Timer(1.0, lambda: webbrowser.open(url)).start()
-    app.run(debug=False, port=5050)
+    port = 5001
+
+    # Detect if we're in a container by checking for /.dockerenv,
+    # a file that Docker creates inside every container.
+    in_docker = os.path.exists("/.dockerenv")
+
+    if not in_docker:
+        import webbrowser
+        import threading
+        url = f"http://127.0.0.1:{port}"
+        threading.Timer(1.0, lambda: webbrowser.open(url)).start()
+
+    host = "0.0.0.0" if in_docker else "127.0.0.1"
+    app.run(debug=False, host=host, port=port)
 
 
 if __name__ == "__main__":
