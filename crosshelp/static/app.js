@@ -93,6 +93,8 @@ function buildPayload(mode) {
 }
 
 function renderResults(results, mode) {
+    els.resultList.setAttribute("data-mode", mode);
+
     if (!results || results.length === 0) {
         els.resultList.innerHTML = `<li class="empty-state">No results found.</li>`;
         return;

@@ -28,7 +28,7 @@ def api_pattern():
         return jsonify({"error": "Pattern is required"}), 400
 
     try:
-        results = find_matches(pattern, min_score=min_score, limit=limit)
+        results = find_matches(pattern, min_score=min_score, limit=10)
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
 
@@ -59,7 +59,15 @@ def api_clue():
     if not clue or not pattern:
         return jsonify({"error": "Both clue and pattern are required"}), 400
 
-    results = solve_clue(clue, pattern)
+    raw_results = solve_clue(clue, pattern=pattern or None)    # Dedup while preserving order
+    seen = set()
+    results = []
+    for word in raw_results:
+        if word not in seen:
+            seen.add(word)
+            results.append(word)
+        if len(results) >= 10:
+            break
     top_result = results[0] if results else None
     search_id = None
     try:
@@ -89,7 +97,7 @@ def api_synonym():
     if not meaning:
         return jsonify({"error": "Meaning is required"}), 400
     
-    results = find_by_meaning(meaning, pattern=pattern, limit=limit)
+    results = find_by_meaning(meaning, pattern=pattern or None)[:10]
     top_result = results[0]["word"] if results else None
     try:
         search_id = log_search(
@@ -104,7 +112,7 @@ def api_synonym():
 
     return jsonify({
         "search_id": search_id,
-        "results": [{"word": word, "score": score} for word, score in results]
+        "results": results
     })
 
 @app.route("/api/history", methods=["GET"])

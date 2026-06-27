@@ -1,34 +1,18 @@
 /* ============================================================
-   Crossword Helper — light, cool palette, clean typography
+   Crossword Helper — Masthead on cream, Fraunces editorial
    ============================================================ */
 
 :root {
-    /* Cool palette: pale blue-grays and soft teal */
-    --bg: #f5f7fa;
-    --surface: #ffffff;
-    --surface-muted: #eef2f6;
-    --border: #e1e7ee;
-    --border-strong: #cbd5e0;
+    --cream: #f8f5ef;
+    --cream-shade: #ebe5d6;
+    --ink: #2a2418;
+    --ink-muted: #94886f;
+    --paper: #ffffff;
+    --rule: #e8e0d0;
 
-    --text: #1a2332;
-    --text-muted: #5a6878;
-    --text-subtle: #8a96a3;
-
-    --accent: #5b8bb0;
-    --accent-hover: #4a7798;
-    --accent-light: #e8f0f7;
-
-    --success: #5fa86c;
-    --error: #c25450;
-    --error-light: #fdecec;
-
-    --radius: 10px;
-    --radius-sm: 6px;
-    --shadow-sm: 0 1px 2px rgba(26, 35, 50, 0.04);
-    --shadow: 0 2px 8px rgba(26, 35, 50, 0.06);
-
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+    --font-display: 'Georgia', 'Times New Roman', serif;
+    --font-body: 'Fraunces', Georgia, serif;
+    --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 * {
@@ -38,9 +22,9 @@
 body {
     margin: 0;
     padding: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-ui);
     font-size: 15px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -48,126 +32,181 @@ body {
 }
 
 /* ============================================================
-   Layout
+   Masthead
    ============================================================ */
 
 header {
-    text-align: center;
-    padding: 48px 24px 32px;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 32px 0;
+}
+
+.masthead {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 14px;
+    margin-bottom: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
 }
 
 header h1 {
-    margin: 0 0 8px;
+    font-family: var(--font-display);
     font-size: 28px;
     font-weight: 700;
+    margin: 0;
     letter-spacing: -0.02em;
-    color: var(--text);
+    color: var(--ink);
 }
 
-header .subtitle {
-    margin: 0;
-    font-size: 14px;
-    color: var(--text-muted);
-    letter-spacing: 0.01em;
+.masthead-tag {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--ink-muted);
 }
+
+/* ============================================================
+   Layout
+   ============================================================ */
 
 main {
     max-width: 640px;
     margin: 0 auto;
-    padding: 0 24px 64px;
+    padding: 0 32px 64px;
 }
 
 /* ============================================================
-   Tabs
+   Tabs (lowercase, underline only)
    ============================================================ */
 
 .tabs {
     display: flex;
-    gap: 4px;
+    justify-content: center;
+    gap: 28px;
     margin-bottom: 24px;
-    border-bottom: 1px solid var(--border);
 }
 
 .tab {
-    flex: 1;
     background: transparent;
     border: none;
-    padding: 12px 16px;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-muted);
+    padding: 4px 0;
+    font-family: var(--font-ui);
+    font-size: 13px;
+    color: var(--ink-muted);
     cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
+    border-bottom: 1px solid transparent;
     transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 .tab:hover {
-    color: var(--text);
+    color: var(--ink);
 }
 
 .tab.active {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
+    color: var(--ink);
+    border-bottom-color: var(--ink);
 }
 
 /* ============================================================
-   Search form card
+   Search form
    ============================================================ */
 
-#search-form {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
-    box-shadow: var(--shadow-sm);
-    margin-bottom: 16px;
+.search-form {
+    margin-bottom: 24px;
+}
+
+.helper {
+    text-align: center;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin: 0 0 12px;
 }
 
 .form-group {
     margin-bottom: 16px;
 }
 
-.form-group:last-of-type {
-    margin-bottom: 20px;
-}
-
 label {
     display: block;
     margin-bottom: 6px;
-    font-size: 13px;
+    font-family: var(--font-ui);
+    font-size: 11px;
     font-weight: 500;
-    color: var(--text-muted);
-    letter-spacing: 0.01em;
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 label .optional {
-    color: var(--text-subtle);
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink-muted);
     font-weight: 400;
-    font-size: 12px;
 }
 
 input[type="text"] {
     width: 100%;
-    padding: 10px 14px;
-    font-family: var(--font-mono);
-    font-size: 14px;
-    color: var(--text);
-    background: var(--surface);
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius-sm);
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    padding: 12px 14px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    border-radius: 4px;
+    transition: box-shadow 0.15s ease;
 }
 
 input[type="text"]:focus {
     outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-light);
+    box-shadow: 0 0 0 3px var(--cream-shade);
 }
 
 input[type="text"]::placeholder {
-    color: var(--text-subtle);
+    color: var(--ink-muted);
+    font-style: italic;
+}
+
+/* Letter-grid hero input for the pattern field */
+
+.letter-grid-wrap {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.letter-grid {
+    display: inline-flex;
+    gap: 4px;
+    justify-content: center;
+}
+
+.letter-cell {
+    width: 40px;
+    height: 40px;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--ink);
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0;
+    line-height: 38px;
+    border-radius: 0;
+    transition: background 0.15s ease;
+}
+
+.letter-cell:focus {
+    outline: none;
+    background: var(--cream-shade);
+}
+
+.letter-cell.wildcard {
+    background: var(--cream-shade);
+    color: var(--ink-muted);
 }
 
 /* ============================================================
@@ -177,53 +216,92 @@ input[type="text"]::placeholder {
 button[type="submit"],
 .btn-primary {
     width: 100%;
-    padding: 11px 16px;
-    background: var(--accent);
-    color: white;
+    padding: 12px;
+    background: var(--ink);
+    color: var(--cream);
     border: none;
-    border-radius: var(--radius-sm);
-    font-family: inherit;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-style: italic;
     font-size: 14px;
-    font-weight: 500;
     cursor: pointer;
     transition: background 0.15s ease;
 }
 
 button[type="submit"]:hover,
 .btn-primary:hover {
-    background: var(--accent-hover);
-}
-
-button[type="submit"]:active,
-.btn-primary:active {
-    transform: translateY(0.5px);
+    background: #1a1610;
 }
 
 /* ============================================================
    Results
    ============================================================ */
 
-#results {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 24px;
-    min-height: 60px;
-    box-shadow: var(--shadow-sm);
+#result-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 6px;
+}
+
+#result-list li {
+    background: var(--paper);
+    padding: 10px 12px;
+    text-align: center;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 8px;
+    overflow: hidden;
+    min-width: 0;
+}
+
+#result-list li .word {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+#result-list[data-mode="synonym"] li .score {
+    display: none;
+}
+
+#result-list li .score {
+    font-family: var(--font-ui);
+    font-size: 11px;
+    color: var(--ink-muted);
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    flex-shrink: 0;
 }
 
 #loading {
     text-align: center;
-    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-style: italic;
+    color: var(--ink-muted);
     font-size: 14px;
-    padding: 12px 0;
+    padding: 16px 0;
 }
 
 #error {
-    background: var(--error-light);
-    color: var(--error);
+    background: var(--paper);
+    color: #993322;
     padding: 12px 16px;
-    border-radius: var(--radius-sm);
+    border-radius: 4px;
+    border: 0.5px solid var(--rule);
+    font-family: var(--font-body);
     font-size: 14px;
     margin-bottom: 12px;
 }
@@ -233,40 +311,38 @@ button[type="submit"]:active,
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 6px;
 }
 
 #result-list li {
-    padding: 8px 12px;
-    background: var(--surface-muted);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-mono);
-    font-size: 14px;
+    background: var(--paper);
+    padding: 10px;
+    text-align: center;
+    font-family: var(--font-body);
     font-weight: 500;
-    color: var(--text);
+    font-size: 16px;
+    color: var(--ink);
+    text-transform: uppercase;
     letter-spacing: 0.04em;
+    border-radius: 3px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-items: baseline;
+    gap: 8px;
 }
 
 #result-list li .score {
+    font-family: var(--font-ui);
     font-size: 11px;
-    color: var(--text-subtle);
+    color: var(--ink-muted);
     font-weight: 400;
     letter-spacing: 0;
-    margin-left: 8px;
+    text-transform: none;
 }
 
 #result-list:empty::before {
-    content: "Search to see results";
-    color: var(--text-subtle);
-    font-size: 14px;
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 20px 0;
-    font-style: italic;
+    content: "";
 }
 
 /* ============================================================
@@ -275,19 +351,21 @@ button[type="submit"]:active,
 
 #feedback-container {
     margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    border-top: 0.5px solid var(--rule);
 }
 
 #feedback-link {
-    color: var(--text-muted);
+    color: var(--ink-muted);
+    font-family: var(--font-body);
+    font-style: italic;
     font-size: 13px;
     text-decoration: none;
     cursor: pointer;
 }
 
 #feedback-link:hover {
-    color: var(--accent);
+    color: var(--ink);
     text-decoration: underline;
 }
 
@@ -300,37 +378,35 @@ button[type="submit"]:active,
 #correct-answer-input {
     flex: 1;
     padding: 8px 12px;
-    font-family: var(--font-mono);
-    font-size: 13px;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 14px;
+    border: 1px solid var(--ink);
+    border-radius: 3px;
     text-transform: uppercase;
+    background: var(--paper);
 }
 
 #correct-answer-input:focus {
     outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-light);
+    box-shadow: 0 0 0 3px var(--cream-shade);
 }
 
 #feedback-submit {
     padding: 8px 14px;
-    background: var(--text);
-    color: white;
+    background: var(--ink);
+    color: var(--cream);
     border: none;
-    border-radius: var(--radius-sm);
-    font-family: inherit;
+    border-radius: 3px;
+    font-family: var(--font-body);
+    font-style: italic;
     font-size: 13px;
-    font-weight: 500;
     cursor: pointer;
 }
 
-#feedback-submit:hover {
-    background: #2a3545;
-}
-
 #feedback-thanks {
-    color: var(--success);
+    color: var(--ink-muted);
+    font-family: var(--font-body);
+    font-style: italic;
     font-size: 13px;
     margin-top: 8px;
 }
@@ -345,24 +421,22 @@ button[type="submit"]:active,
 
 @media (max-width: 520px) {
     header {
-        padding: 32px 16px 24px;
+        padding: 32px 20px 0;
     }
 
     header h1 {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     main {
-        padding: 0 16px 48px;
+        padding: 0 20px 48px;
     }
 
-    #search-form,
-    #results {
-        padding: 20px;
-    }
-
-    .tabs {
-        font-size: 13px;
+    .letter-cell {
+        width: 36px;
+        height: 36px;
+        line-height: 34px;
+        font-size: 18px;
     }
 
     #result-list {

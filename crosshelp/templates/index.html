@@ -2,61 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Crossword Helper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Crossword Helper</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <main>
-        <header>
-            <h1>Caroline's Crossword Helper!</h1>
-            <p class="subtitle">Pattern matching · Clue solving · Word lookup</p>
-        </header>
+    <header>
+        <div class="masthead">
+            <h1>The Crossword Helper</h1>
+            <span class="masthead-tag">est. 2026</span>
+        </div>
+    </header>
 
+    <main>
         <nav class="tabs">
-            <button class="tab active" data-mode="pattern">Pattern</button>
-            <button class="tab" data-mode="clue">Clue</button>
-            <button class="tab" data-mode="synonym">Meaning</button>
+            <button class="tab active" data-mode="pattern">pattern</button>
+            <button class="tab" data-mode="clue">clue</button>
+            <button class="tab" data-mode="synonym">meaning</button>
         </nav>
 
-        <section class="form" id="form-pattern">
-            <label>Pattern <small>(use ? for unknown letters)</small></label>
-            <input type="text" id="pattern-input" placeholder="C?OSSW?RD">
-            <label>Minimum score</label>
-            <input type="number" id="pattern-min-score" value="50" min="0" max="100">
-            <button class="search-btn" data-mode="pattern">Search</button>
-        </section>
+        <!-- Pattern mode -->
+        <div id="form-pattern" class="search-form">
+            <p class="helper">Enter a pattern — ? for any letter</p>
+            <div class="form-group">
+                <input type="text" id="pattern-input" placeholder="C?T" />
+            </div>
+            <div class="form-group">
+                <label for="pattern-min-score">Minimum score <span class="optional">(optional)</span></label>
+                <input type="text" id="pattern-min-score" placeholder="0" />
+            </div>
+            <button class="btn-primary search-btn" data-mode="pattern" type="button">Search</button>
+        </div>
 
-        <section class="form hidden" id="form-clue">
-            <label>Clue</label>
-            <input type="text" id="clue-text" placeholder="Capital of France">
-            <label>Pattern <small>(use ? for unknown letters)</small></label>
-            <input type="text" id="clue-pattern" placeholder="?????">
-            <button class="search-btn" data-mode="clue">Solve</button>
-        </section>
+        <!-- Clue mode -->
+        <div id="form-clue" class="search-form hidden">
+            <p class="helper">Give a clue and an optional letter pattern</p>
+            <div class="form-group">
+                <label for="clue-text">Clue</label>
+                <input type="text" id="clue-text" placeholder="Capital of France" />
+            </div>
+            <div class="form-group">
+                <label for="clue-pattern">Pattern <span class="optional">(optional)</span></label>
+                <input type="text" id="clue-pattern" placeholder="?????" />
+            </div>
+            <button class="btn-primary search-btn" data-mode="clue" type="button">Search</button>
+        </div>
 
-        <section class="form hidden" id="form-synonym">
-            <label>Meaning</label>
-            <input type="text" id="synonym-meaning" placeholder="fleeting">
-            <label>Pattern <small>(optional)</small></label>
-            <input type="text" id="synonym-pattern" placeholder="?????????">
-            <button class="search-btn" data-mode="synonym">Search</button>
-        </section>
+        <!-- Meaning mode -->
+        <div id="form-synonym" class="search-form hidden">
+            <p class="helper">Search by meaning and an optional letter pattern</p>
+            <div class="form-group">
+                <label for="synonym-meaning">Meaning</label>
+                <input type="text" id="synonym-meaning" placeholder="anger" />
+            </div>
+            <div class="form-group">
+                <label for="synonym-pattern">Pattern <span class="optional">(optional)</span></label>
+                <input type="text" id="synonym-pattern" placeholder="???" />
+            </div>
+            <button class="btn-primary search-btn" data-mode="synonym" type="button">Search</button>
+        </div>
 
         <section id="results">
-            <div id="loading" class="hidden">Searching...</div>
+            <div id="loading" class="hidden">Searching…</div>
             <div id="error" class="hidden"></div>
             <ul id="result-list"></ul>
+
             <div id="feedback-container" class="hidden">
                 <a href="#" id="feedback-link">Top recommendation incorrect? Click here</a>
                 <div id="feedback-form" class="hidden">
-                    <label for="correct-answer-input">What's the correct answer?</label>
-                    <input type="text" id="correct-answer-input" placeholder="Type the correct answer">
-                    <button id="feedback-submit">Submit</button>
-                    <span id="feedback-thanks" class="hidden">Thanks — recorded.</span>
+                    <input type="text" id="correct-answer-input" placeholder="Correct answer" />
+                    <button id="feedback-submit" type="button">Submit</button>
                 </div>
+                <p id="feedback-thanks" class="hidden">Thanks — your feedback was recorded.</p>
             </div>
         </section>
     </main>
